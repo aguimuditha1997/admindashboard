@@ -23,6 +23,7 @@
     height: 100%;
     background: var(--main-color);
     z-index: 100;
+    transition: width 300ms;
 }
 
 .sidebar-brand{
@@ -67,7 +68,39 @@
     font-size:1.5rem;
     padding-right: 1rem;
 }
+
+#nav-toggle:checked + .sidebar{
+    width: 80px;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand,
+#nav-toggle:checked + .sidebar li {
+    padding-left: 1rem;
+    text-align: center;
+}
+
+#nav-toggle:checked + .sidebar li a {
+    padding-left: 0rem;
+}
+
+
+#nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
+#nav-toggle:checked + .sidebar li a span:last-child{
+    display: none;
+}
+
+#nav-toggle:checked ~ .main-content{
+    margin-left: 80px;
+}
+
+#nav-toggle:checked ~ .main-content header{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+
 .main-content{
+    transition: margin-left 300ms;
     margin-left: 345px;
 }
 
@@ -80,6 +113,12 @@ header {
     left: 345px;
     width: calc(100% - 345px);
     top: 0;
+    z-index: 100;
+    transition:left 300ms;
+}
+
+#nav-toggle{
+    display: none;
 }
 
 header h2{
@@ -260,7 +299,7 @@ tr td:last-child{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 1rem;
+    padding: .5rem .7rem;
 }
 
 .info {
@@ -290,3 +329,4 @@ tr td:last-child{
     margin-left: .5rem;
     color: var(--main-color);
 } 
+
